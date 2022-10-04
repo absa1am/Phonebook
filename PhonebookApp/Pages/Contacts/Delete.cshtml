@@ -1,0 +1,32 @@
+@page
+@model PhonebookApp.Pages.Contacts.DeleteModel
+@{
+    ViewData["Title"] = "Delete Contact";
+}
+
+<div class="row text-center">
+    <h2 class="display-6">Contacts</h2>
+    <div class="col-4"></div>
+    <div class="col-4">
+        <form method="post">
+            <input hidden asp-for="Contact.ID"/>
+            <div class="border p-3 mt-4">
+                <div class="mb-3">
+                    <label asp-for="@Model.Contact.Name"></label>
+                    <input asp-for="Contact.Name" disabled class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Contact.Phone"></label>
+                    <input asp-for="@Model.Contact.Phone" disabled class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label asp-for="@Model.Contact.Email"></label>
+                    <input asp-for="@Model.Contact.Email" disabled class="form-control">
+                </div>
+                <a asp-page="Index" role="button" class="btn btn-secondary">Cancel</a>
+                <button type="submit" class="btn btn-danger">Delete</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-4"></div>
+</div>
