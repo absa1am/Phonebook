@@ -1,0 +1,34 @@
+@page
+@model PhonebookApp.Pages.Contacts.IndexModel
+@{
+    ViewData["Title"] = "Contact List";
+}
+
+<div class="text-center">
+    <h2 class="display-6">Contacts</h2>
+    <table class="table table-bordered table-striped text-center">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in @Model.Contacts)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Phone</td>
+                    <td>@item.Email</td>
+                    <td>Edit</td>
+                </tr>                
+            }
+        </tbody>
+    </table>
+    <a asp-page="Create" class="btn btn-parimary">
+        Create
+    </a>
+</div>
