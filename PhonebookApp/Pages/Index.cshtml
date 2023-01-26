@@ -1,10 +1,29 @@
 ﻿@page
-@model IndexModel
+@model PhonebookApp.Pages.Contacts.IndexModel
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Welcome to Open Phonebook";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p></p>
+    <h6 class="display-6">Open Phonebook</h6>
+    <table class="table table-bordered table-striped text-center">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in @Model.Contacts)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.Phone</td>
+                    <td>@item.Email</td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
