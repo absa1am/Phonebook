@@ -17,6 +17,18 @@ namespace PhonebookAPI.Controllers
         }
 
         [HttpGet]
+        [Route("{id}")]
+        public async Task<ActionResult<ContactModel>> GetContact(int id)
+        {
+            ContactModel contact = await appDbContext.Contacts.FindAsync(id);
+
+            if (contact is null)
+                return NotFound("Sorry, contact doesn't exist.");
+
+            return Ok(contact);
+        }
+
+        [HttpGet]
         public async Task<ActionResult<List<ContactModel>>> GetContacts()
         {
             List<ContactModel> contacts = appDbContext.Contacts.ToList();
