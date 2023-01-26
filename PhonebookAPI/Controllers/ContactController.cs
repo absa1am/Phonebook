@@ -44,5 +44,23 @@ namespace PhonebookAPI.Controllers
 
             return Ok("Contact added successfully.");
         }
+
+        [HttpPut]
+        [Route("{id}")]
+        public async Task<ActionResult> UpdateContact(int id, ContactModel request)
+        {
+            ContactModel contact = await appDbContext.Contacts.FindAsync(id);
+
+            if (contact is null)
+                return NotFound("Sorry, contact doesn't exist.");
+
+            contact.Name = request.Name;
+            contact.Phone = request.Phone;
+            contact.Email = request.Email;
+
+            await appDbContext.SaveChangesAsync();
+
+            return Ok("Contact updated successfully.");
+        }
     }
 }
