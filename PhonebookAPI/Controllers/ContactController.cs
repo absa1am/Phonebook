@@ -62,5 +62,20 @@ namespace PhonebookAPI.Controllers
 
             return Ok("Contact updated successfully.");
         }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public ActionResult DeleteContact(int id)
+        {
+            ContactModel contact = appDbContext.Contacts.Find(id);
+
+            if (contact is null)
+                return NotFound("Sorry, contact doesn't exist.");
+
+            appDbContext.Remove(contact);
+            appDbContext.SaveChanges();
+
+            return Ok("Contact deleted successfully.");
+        }
     }
 }
