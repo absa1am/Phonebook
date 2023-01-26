@@ -1,2 +1,2 @@
 # Phonebook
-Web based Phonebook app using Razor Pages in ASP.NET Core
+Web based Phonebook app using Razor Pages and MVC api in ASP.NET Core
