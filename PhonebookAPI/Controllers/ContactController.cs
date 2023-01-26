@@ -26,5 +26,23 @@ namespace PhonebookAPI.Controllers
 
             return Ok(contacts);
         }
+
+        [HttpPost]
+        public async Task<ActionResult> CreateContact(ContactModel request)
+        {
+            if (request == null)
+                return NotFound("Sorry, failed to create contact.");
+
+            var contact = new ContactModel();
+
+            contact.Name = request.Name;
+            contact.Phone = request.Phone;
+            contact.Email = request.Email;
+
+            await appDbContext.Contacts.AddAsync(contact);
+            await appDbContext.SaveChangesAsync();
+
+            return Ok("Contact added successfully.");
+        }
     }
 }
